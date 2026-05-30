@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Balima Business Center - iPhone Premium</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0b0b0f;
+  --card:#15151c;
+  --text:#ffffff;
+  --muted:#a1a1aa;
+  --accent:#d4af37;
+  --green:#25D366;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+.container{max-width:1200px;margin:auto;padding:20px;}
+
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 0;
+}
+
+.logo{
+  font-size:1.4rem;
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+.logo span{color:var(--accent);}
+
+.btn{
+  padding:10px 16px;
+  border-radius:12px;
+  border:none;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.btn-whatsapp{
+  background:var(--green);
+  color:#fff;
+}
+
+.hero{
+  text-align:center;
+  padding:70px 20px;
+}
+
+.hero h1{
+  font-size:3rem;
+  font-weight:700;
+}
+
+.hero p{
+  color:var(--muted);
+  margin-top:10px;
+}
+
+.badge{
+  display:inline-block;
+  padding:6px 12px;
+  background:#1f1f2a;
+  border-radius:999px;
+  margin-bottom:15px;
+  font-size:0.8rem;
+  color:var(--accent);
+}
+
+.filters{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:30px 0;
+}
+
+.filter-btn{
+  padding:8px 14px;
+  border-radius:10px;
+  border:1px solid #333;
+  background:transparent;
+  color:white;
+  cursor:pointer;
+}
+
+.filter-btn.active{
+  background:var(--accent);
+  color:#000;
+}
+
+.search{
+  display:flex;
+  justify-content:center;
+  margin-bottom:20px;
+}
+
+.search input{
+  padding:12px;
+  width:300px;
+  border-radius:10px;
+  border:none;
+  outline:none;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:var(--card);
+  padding:18px;
+  border-radius:16px;
+  transition:.3s;
+  cursor:pointer;
+  border:1px solid #222;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  border-color:var(--accent);
+}
+
+.card h3{
+  margin-bottom:8px;
+}
+
+.price{
+  color:var(--accent);
+  font-weight:700;
+  margin:8px 0;
+}
+
+.small{
+  color:var(--muted);
+  font-size:0.9rem;
+}
+
+.section{
+  padding:60px 0;
+}
+
+.title{
+  text-align:center;
+  font-size:2rem;
+  margin-bottom:30px;
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(20px);
+  transition:0.6s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.modal{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.8);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.modal-content{
+  background:#111;
+  padding:20px;
+  border-radius:15px;
+  width:300px;
+}
+
+.close{
+  float:right;
+  cursor:pointer;
+  color:red;
+}
+
+footer{
+  text-align:center;
+  padding:40px;
+  color:var(--muted);
+  border-top:1px solid #222;
+}
+</style>
+</head>
+
+<body>
+
+<nav class="container">
+  <div class="logo">BALIMA <span>BUSINESS CENTER</span></div>
+  <button class="btn btn-whatsapp" onclick="window.location='https://wa.me/22666561900'">
+    WhatsApp
+  </button>
+</nav>
+
+<header class="hero container">
+  <div class="badge">📱 iPhone Premium Store</div>
+  <h1>Les meilleurs iPhone au meilleur prix</h1>
+  <p>iPhone 13 & 14 disponibles avec garantie et livraison</p>
+</header>
+
+<section class="container">
+
+  <div class="search">
+    <input type="text" id="search" placeholder="Rechercher iPhone...">
+  </div>
+
+  <div class="filters">
+    <button class="filter-btn active" onclick="filter('all')">Tous</button>
+    <button class="filter-btn" onclick="filter('13')">iPhone 13</button>
+    <button class="filter-btn" onclick="filter('14')">iPhone 14</button>
+  </div>
+
+  <div class="grid" id="grid">
+
+    <div class="card reveal" data-type="13">
+      <h3>iPhone 13</h3>
+      <div class="price">À confirmer</div>
+      <p class="small">128 Go - Noir - Stock dispo</p>
+      <button class="btn btn-whatsapp" onclick="openModal('iPhone 13')">Acheter</button>
+    </div>
+
+    <div class="card reveal" data-type="13">
+      <h3>iPhone 13 Pro</h3>
+      <div class="price">À confirmer</div>
+      <p class="small">256 Go - Stock dispo</p>
+      <button class="btn btn-whatsapp" onclick="openModal('iPhone 13 Pro')">Acheter</button>
+    </div>
+
+    <div class="card reveal" data-type="14">
+      <h3>iPhone 14</h3>
+      <div class="price">À confirmer</div>
+      <p class="small">128 Go - Nouveau</p>
+      <button class="btn btn-whatsapp" onclick="openModal('iPhone 14')">Acheter</button>
+    </div>
+
+    <div class="card reveal" data-type="14">
+      <h3>iPhone 14 Pro</h3>
+      <div class="price">À confirmer</div>
+      <p class="small">256 Go - Premium</p>
+      <button class="btn btn-whatsapp" onclick="openModal('iPhone 14 Pro')">Acheter</button>
+    </div>
+
+  </div>
+</section>
+
+<section class="section container reveal">
+  <h2 class="title">Pourquoi nous choisir ?</h2>
+  <p class="small" style="text-align:center;">
+    Livraison disponible • Garantie • WhatsApp rapide • Produits testés
+  </p>
+</section>
+
+<footer>
+  📍 1200 logements - Aube Nouvelle <br>
+  📞 66 56 19 XX / 72 14 77 24
+</footer>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">X</span>
+    <h3 id="modalTitle"></h3>
+    <p>Confirmer l'achat sur WhatsApp</p>
+    <button class="btn btn-whatsapp" id="buyBtn">Commander</button>
+  </div>
+</div>
+
+<script>
+
+function filter(type){
+  const cards=document.querySelectorAll('.card');
+  const buttons=document.querySelectorAll('.filter-btn');
+
+  buttons.forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+
+  cards.forEach(card=>{
+    if(type==='all' || card.dataset.type===type){
+      card.style.display='block';
+    }else{
+      card.style.display='none';
+    }
+  });
+}
+
+document.getElementById('search').addEventListener('input',function(){
+  let value=this.value.toLowerCase();
+  document.querySelectorAll('.card').forEach(card=>{
+    card.style.display=card.innerText.toLowerCase().includes(value)?'block':'none';
+  });
+});
+
+// scroll animation
+const items=document.querySelectorAll('.reveal');
+window.addEventListener('scroll',()=>{
+  items.forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight-80){
+      el.classList.add('active');
+    }
+  });
+});
+
+// modal
+let selected="";
+function openModal(name){
+  selected=name;
+  document.getElementById('modal').style.display='flex';
+  document.getElementById('modalTitle').innerText=name;
+}
+
+function closeModal(){
+  document.getElementById('modal').style.display='none';
+}
+
+document.getElementById('buyBtn').onclick=function(){
+  let msg="Bonjour, je veux acheter "+selected;
+  window.location="https://wa.me/22666561900?text="+encodeURIComponent(msg);
+}
+
+</script>
+
+</body>
+</html>
