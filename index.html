@@ -1,344 +1,310 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Balima Business Center - iPhone Premium</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Balima Business Center</title>
+  <style>
+    :root{
+      --bg:#070b14;
+      --card:#101827;
+      --line:rgba(255,255,255,.08);
+      --text:#f5f7fb;
+      --muted:#9aa6bd;
+      --gold:#d8b26a;
+      --blue:#4d8fff;
+      --green:#22c55e;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial,sans-serif;
+      background:radial-gradient(circle at top, rgba(77,143,255,.15), transparent 28%), var(--bg);
+      color:var(--text);
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    .hero{
+      padding:72px 0 36px;
+      text-align:center;
+    }
+    .badge{
+      display:inline-block;
+      padding:8px 14px;
+      border:1px solid rgba(77,143,255,.25);
+      border-radius:999px;
+      background:rgba(77,143,255,.08);
+      color:var(--blue);
+      font-size:.85rem;
+    }
+    h1{
+      font-size:clamp(2.4rem,6vw,4.6rem);
+      margin:18px 0 14px;
+      line-height:1.02;
+    }
+    .hero p{
+      max-width:760px;
+      margin:0 auto;
+      color:var(--muted);
+      line-height:1.8;
+      font-size:1.03rem;
+    }
+    .actions{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:26px;
+    }
+    .btn{
+      padding:14px 20px;
+      border-radius:14px;
+      font-weight:700;
+      border:1px solid transparent;
+    }
+    .btn-primary{
+      background:linear-gradient(135deg,var(--blue),#6aa0ff);
+      color:#fff;
+    }
+    .btn-secondary{
+      background:rgba(255,255,255,.04);
+      border-color:var(--line);
+      color:var(--text);
+    }
 
-<style>
-:root{
-  --bg:#0b0b0f;
-  --card:#15151c;
-  --text:#ffffff;
-  --muted:#a1a1aa;
-  --accent:#d4af37;
-  --green:#25D366;
-}
+    .section{padding:18px 0 34px}
+    .title{
+      font-size:clamp(1.8rem,4vw,3rem);
+      margin:0 0 18px;
+    }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:20px;
+    }
+    .card{
+      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:0 20px 55px rgba(0,0,0,.28);
+    }
+    .card img{
+      width:100%;
+      aspect-ratio:1/1;
+      object-fit:cover;
+      background:#111827;
+    }
+    .card-body{padding:18px}
+    .brand{
+      color:var(--gold);
+      font-size:.82rem;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-weight:700;
+    }
+    .card h3{
+      margin:8px 0 8px;
+      font-size:1.15rem;
+    }
+    .card p{
+      margin:0 0 12px;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:.92rem;
+    }
+    .price{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-top:8px;
+    }
+    .old{
+      color:#7b8798;
+      text-decoration:line-through;
+      font-size:.9rem;
+    }
+    .new{
+      color:#fff;
+      font-size:1.05rem;
+      font-weight:800;
+    }
+    .buy{
+      display:block;
+      margin-top:14px;
+      padding:13px 16px;
+      text-align:center;
+      border-radius:14px;
+      background:linear-gradient(135deg,var(--gold),#f7deab);
+      color:#111827;
+      font-weight:900;
+    }
 
-body{
-  background:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
-}
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:16px;
+      margin-top:22px;
+    }
+    .stat{
+      background:rgba(255,255,255,.03);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      text-align:center;
+    }
+    .stat strong{
+      display:block;
+      font-size:1.5rem;
+      margin-bottom:6px;
+    }
+    .stat span{
+      color:var(--muted);
+      font-size:.92rem;
+    }
 
-.container{max-width:1200px;margin:auto;padding:20px;}
+    .video{
+      margin-top:28px;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:18px;
+    }
+    .video-box{
+      position:relative;
+      padding-top:56.25%;
+      border-radius:16px;
+      overflow:hidden;
+      background:#000;
+    }
+    .video-box iframe,
+    .video-box video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+    }
 
-nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 0;
-}
+    .contact{
+      padding:40px 0 70px;
+      text-align:center;
+    }
+    .contact-box{
+      max-width:680px;
+      margin:0 auto;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:28px;
+    }
+    .contact-box p{
+      color:var(--muted);
+      line-height:1.8;
+    }
+    .wa{
+      display:inline-block;
+      margin-top:18px;
+      padding:14px 22px;
+      border-radius:14px;
+      background:var(--green);
+      color:#fff;
+      font-weight:800;
+    }
 
-.logo{
-  font-size:1.4rem;
-  font-weight:700;
-  letter-spacing:1px;
-}
+    .footer{
+      padding:26px 0 36px;
+      text-align:center;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+    }
 
-.logo span{color:var(--accent);}
-
-.btn{
-  padding:10px 16px;
-  border-radius:12px;
-  border:none;
-  cursor:pointer;
-  font-weight:600;
-}
-
-.btn-whatsapp{
-  background:var(--green);
-  color:#fff;
-}
-
-.hero{
-  text-align:center;
-  padding:70px 20px;
-}
-
-.hero h1{
-  font-size:3rem;
-  font-weight:700;
-}
-
-.hero p{
-  color:var(--muted);
-  margin-top:10px;
-}
-
-.badge{
-  display:inline-block;
-  padding:6px 12px;
-  background:#1f1f2a;
-  border-radius:999px;
-  margin-bottom:15px;
-  font-size:0.8rem;
-  color:var(--accent);
-}
-
-.filters{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  flex-wrap:wrap;
-  margin:30px 0;
-}
-
-.filter-btn{
-  padding:8px 14px;
-  border-radius:10px;
-  border:1px solid #333;
-  background:transparent;
-  color:white;
-  cursor:pointer;
-}
-
-.filter-btn.active{
-  background:var(--accent);
-  color:#000;
-}
-
-.search{
-  display:flex;
-  justify-content:center;
-  margin-bottom:20px;
-}
-
-.search input{
-  padding:12px;
-  width:300px;
-  border-radius:10px;
-  border:none;
-  outline:none;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-
-.card{
-  background:var(--card);
-  padding:18px;
-  border-radius:16px;
-  transition:.3s;
-  cursor:pointer;
-  border:1px solid #222;
-}
-
-.card:hover{
-  transform:translateY(-5px);
-  border-color:var(--accent);
-}
-
-.card h3{
-  margin-bottom:8px;
-}
-
-.price{
-  color:var(--accent);
-  font-weight:700;
-  margin:8px 0;
-}
-
-.small{
-  color:var(--muted);
-  font-size:0.9rem;
-}
-
-.section{
-  padding:60px 0;
-}
-
-.title{
-  text-align:center;
-  font-size:2rem;
-  margin-bottom:30px;
-}
-
-.reveal{
-  opacity:0;
-  transform:translateY(20px);
-  transition:0.6s ease;
-}
-
-.reveal.active{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.modal{
-  position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
-  background:rgba(0,0,0,0.8);
-  display:none;
-  justify-content:center;
-  align-items:center;
-}
-
-.modal-content{
-  background:#111;
-  padding:20px;
-  border-radius:15px;
-  width:300px;
-}
-
-.close{
-  float:right;
-  cursor:pointer;
-  color:red;
-}
-
-footer{
-  text-align:center;
-  padding:40px;
-  color:var(--muted);
-  border-top:1px solid #222;
-}
-</style>
+    @media(max-width:900px){
+      .grid,.stats{grid-template-columns:1fr 1fr}
+      .card img{aspect-ratio:4/3}
+    }
+    @media(max-width:640px){
+      .grid,.stats{grid-template-columns:1fr}
+      .hero{padding-top:52px}
+    }
+  </style>
 </head>
-
 <body>
-
-<nav class="container">
-  <div class="logo">BALIMA <span>BUSINESS CENTER</span></div>
-  <button class="btn btn-whatsapp" onclick="window.location='https://wa.me/22666561900'">
-    WhatsApp
-  </button>
-</nav>
-
-<header class="hero container">
-  <div class="badge">📱 iPhone Premium Store</div>
-  <h1>Les meilleurs iPhone au meilleur prix</h1>
-  <p>iPhone 13 & 14 disponibles avec garantie et livraison</p>
+  <header class="hero" id="home">
+  <div class="wrap">
+    <div class="badge">Balima Business Center</div>
+    <h1>Des iPhone testés et prêts à livrer.</h1>
+<p>Le bon iPhone, au bon prix, avec une commande facile et un service sérieux du début à la fin.</p>
+    <div class="actions">
+      <a href="#produits" class="btn btn-primary">Voir les iPhone</a>
+      <a href="https://wa.me/22607190217" class="btn btn-secondary">Contacter WhatsApp</a>
+    </div>
+  </div>
 </header>
 
-<section class="container">
+  <main class="wrap">
+    <section class="section" id="produits">
+      <h2 class="title">Nos iPhone disponibles</h2>
+      <div class="grid">
+        <article class="card">
+          <img src="iPhone_13_Pro_Max_-_Silver_-_Overlap_Trans-cropped.jpg" alt="iPhone 13 Pro Max Silver">
+          <div class="card-body">
+            <div class="brand">Apple</div>
+            <h3>iPhone 13 Pro Max Silver</h3>
+            <p>État excellent, design premium, caméra puissante et finition haut de gamme.</p>
+            <div class="price"><span class="old">450 000 XOF</span><span class="new">420 000 XOF</span></div>
+            <a class="buy" href="https://wa.me/22607190217?text=Bonjour%2C%20je%20veux%20le%20iPhone%2013%20Pro%20Max%20Silver.">Commander sur WhatsApp</a>
+          </div>
+        </article>
 
-  <div class="search">
-    <input type="text" id="search" placeholder="Rechercher iPhone...">
-  </div>
+        <article class="card">
+          <img src="iphone-13-BLANC.png" alt="iPhone 13 Blanc">
+          <div class="card-body">
+            <div class="brand">Apple</div>
+            <h3>iPhone 13 Blanc</h3>
+            <p>Un modèle très demandé, parfait pour ceux qui veulent un téléphone propre et élégant.</p>
+            <div class="price"><span class="old">320 000 XOF</span><span class="new">295 000 XOF</span></div>
+            <a class="buy" href="https://wa.me/22607190217?text=Bonjour%2C%20je%20veux%20le%20iPhone%2013%20Blanc.">Commander sur WhatsApp</a>
+          </div>
+        </article>
 
-  <div class="filters">
-    <button class="filter-btn active" onclick="filter('all')">Tous</button>
-    <button class="filter-btn" onclick="filter('13')">iPhone 13</button>
-    <button class="filter-btn" onclick="filter('14')">iPhone 14</button>
-  </div>
+        <article class="card">
+          <img src="iphone-14-pro-max-back-1.jpg" alt="iPhone 14 Pro Max Back">
+          <div class="card-body">
+            <div class="brand">Apple</div>
+            <h3>iPhone 14 Pro Max</h3>
+            <p>Version premium avec excellent appareil photo et finition luxueuse.</p>
+            <div class="price"><span class="old">620 000 XOF</span><span class="new">585 000 XOF</span></div>
+            <a class="buy" href="https://wa.me/22607190217?text=Bonjour%2C%20je%20veux%20le%20iPhone%2014%20Pro%20Max.">Commander sur WhatsApp</a>
+          </div>
+        </article>
+      </div>
+    </section>
 
-  <div class="grid" id="grid">
+    <section class="video section" id="video">
+      <h2 class="title">Vidéo de présentation</h2>
+      <div class="video-box">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Vidéo de présentation" allowfullscreen></iframe>
+      </div>
+    </section>
+  </main>
 
-    <div class="card reveal" data-type="13">
-      <h3>iPhone 13</h3>
-      <div class="price">À confirmer</div>
-      <p class="small">128 Go - Noir - Stock dispo</p>
-      <button class="btn btn-whatsapp" onclick="openModal('iPhone 13')">Acheter</button>
+  <section class="contact">
+    <div class="wrap">
+      <div class="contact-box">
+<h2 style="margin-bottom:10px;">Achetez vos iPhone en toute confiance</h2>
+<p>Des téléphones vérifiés, des prix clairs, une livraison rapide et un service WhatsApp disponible pour répondre à toutes vos questions.</p>
+        <a class="wa" href="https://wa.me/22607190217">Contacter sur WhatsApp</a>
+      </div>
     </div>
+  </section>
 
-    <div class="card reveal" data-type="13">
-      <h3>iPhone 13 Pro</h3>
-      <div class="price">À confirmer</div>
-      <p class="small">256 Go - Stock dispo</p>
-      <button class="btn btn-whatsapp" onclick="openModal('iPhone 13 Pro')">Acheter</button>
-    </div>
-
-    <div class="card reveal" data-type="14">
-      <h3>iPhone 14</h3>
-      <div class="price">À confirmer</div>
-      <p class="small">128 Go - Nouveau</p>
-      <button class="btn btn-whatsapp" onclick="openModal('iPhone 14')">Acheter</button>
-    </div>
-
-    <div class="card reveal" data-type="14">
-      <h3>iPhone 14 Pro</h3>
-      <div class="price">À confirmer</div>
-      <p class="small">256 Go - Premium</p>
-      <button class="btn btn-whatsapp" onclick="openModal('iPhone 14 Pro')">Acheter</button>
-    </div>
-
-  </div>
-</section>
-
-<section class="section container reveal">
-  <h2 class="title">Pourquoi nous choisir ?</h2>
-  <p class="small" style="text-align:center;">
-    Livraison disponible • Garantie • WhatsApp rapide • Produits testés
-  </p>
-</section>
-
-<footer>
-  📍 1200 logements - Aube Nouvelle <br>
-  📞 66 56 19 XX / 72 14 77 24
-</footer>
-
-<!-- MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">X</span>
-    <h3 id="modalTitle"></h3>
-    <p>Confirmer l'achat sur WhatsApp</p>
-    <button class="btn btn-whatsapp" id="buyBtn">Commander</button>
-  </div>
-</div>
-
-<script>
-
-function filter(type){
-  const cards=document.querySelectorAll('.card');
-  const buttons=document.querySelectorAll('.filter-btn');
-
-  buttons.forEach(b=>b.classList.remove('active'));
-  event.target.classList.add('active');
-
-  cards.forEach(card=>{
-    if(type==='all' || card.dataset.type===type){
-      card.style.display='block';
-    }else{
-      card.style.display='none';
-    }
-  });
-}
-
-document.getElementById('search').addEventListener('input',function(){
-  let value=this.value.toLowerCase();
-  document.querySelectorAll('.card').forEach(card=>{
-    card.style.display=card.innerText.toLowerCase().includes(value)?'block':'none';
-  });
-});
-
-// scroll animation
-const items=document.querySelectorAll('.reveal');
-window.addEventListener('scroll',()=>{
-  items.forEach(el=>{
-    if(el.getBoundingClientRect().top < window.innerHeight-80){
-      el.classList.add('active');
-    }
-  });
-});
-
-// modal
-let selected="";
-function openModal(name){
-  selected=name;
-  document.getElementById('modal').style.display='flex';
-  document.getElementById('modalTitle').innerText=name;
-}
-
-function closeModal(){
-  document.getElementById('modal').style.display='none';
-}
-
-document.getElementById('buyBtn').onclick=function(){
-  let msg="Bonjour, je veux acheter "+selected;
-  window.location="https://wa.me/22666561900?text="+encodeURIComponent(msg);
-}
-
-</script>
-
+  <footer class="footer">
+    <div class="wrap">© 2026 Balima Business Center · Tous droits réservés</div>
+  </footer>
 </body>
 </html>
